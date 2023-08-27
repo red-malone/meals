@@ -4,15 +4,20 @@ import 'package:meals/screen/meal_deets.dart';
 import 'package:meals/widgets/meal_item.dart';
 
 class MealsPage extends StatelessWidget {
-  const MealsPage({super.key, required this.title, required this.meals});
-  final String title;
+  const MealsPage({super.key, this.title, required this.meals,required this.ontoggleliked});
+  final String? title;
   final List<Meal> meals;
+  final Function (Meal meal) ontoggleliked;
 
   void selectmeal(BuildContext context, Meal meal) {
     Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => MealDetailScreen(meal: meal),
-        ),
-      );
+      MaterialPageRoute(
+        builder: (context) => MealDetailScreen(
+          meal: meal,
+          likedmeal: ontoggleliked,
+          ),
+      ),
+    );
   }
 
   @override
@@ -32,6 +37,7 @@ class MealsPage extends StatelessWidget {
     if (meals.isEmpty) {
       return Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               "No meals found!",
@@ -48,9 +54,13 @@ class MealsPage extends StatelessWidget {
         ),
       );
     }
+
+    if (title == null) {
+      return content;
+    }
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(title!),
       ),
       body: content,
     );
