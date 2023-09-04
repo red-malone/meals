@@ -6,9 +6,9 @@ import 'package:meals/widgets/category_grid_item.dart';
 import 'package:meals/model/category.dart';
 
 class CategoriesPage extends StatelessWidget {
-  const CategoriesPage({super.key, required this.ontoggleliked,required this.available});
+  const CategoriesPage({super.key,required this.available});
 
-  final void Function(Meal meal) ontoggleliked;
+
   final List<Meal> available;
 
   void _selectCategory(BuildContext context, Category category) {
@@ -22,7 +22,6 @@ class CategoriesPage extends StatelessWidget {
           return MealsPage(
             title: category.title,
             meals: filter,
-            ontoggleliked: ontoggleliked,
           );
         },
       ),
