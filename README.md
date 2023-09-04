@@ -29,7 +29,7 @@ To run this app on your local machine, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone <repository_url>
+   git clone [<repository_url>](https://github.com/red-malone/meals.git)
    ```
 
 2. Navigate to the project folder:
@@ -55,6 +55,7 @@ To run this app on your local machine, follow these steps:
 This project relies on the following Flutter packages:
 
 - [Riverpod](https://pub.dev/packages/riverpod) for state management.
+- [Google Fonts](https://pub.dev/packages/google_fonts) for font access.
 
 ## Contribution
 
