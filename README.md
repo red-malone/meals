@@ -57,10 +57,6 @@ This project relies on the following Flutter packages:
 - [Riverpod](https://pub.dev/packages/riverpod) for state management.
 - [Google Fonts](https://pub.dev/packages/google_fonts) for font access.
 
-## Contribution
-
-Contributions to this project are welcome. If you'd like to contribute, please follow the guidelines in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
