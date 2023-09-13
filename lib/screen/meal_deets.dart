@@ -10,7 +10,8 @@ class MealDetailScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final favmeals=ref.watch(favMealsProvider);
+    final favmeals = ref.watch(favMealsProvider);
+    final isfav = favmeals.contains(meal);
 
     return Scaffold(
       appBar: AppBar(
@@ -25,18 +26,33 @@ class MealDetailScreen extends ConsumerWidget {
                 SnackBar(content: Text(added ? "Meal Added" : "Meal Removed")),
               );
             },
-            icon: Icon(favmeals.contains(meal)? Icons.star:Icons.star_border),
+            icon: AnimatedSwitcher(
+              transitionBuilder: (child, animation) {
+                return RotationTransition(
+                  turns: animation,
+                  child: child,
+                );
+              },
+              duration: const Duration(milliseconds: 200),
+              child: Icon(
+                isfav ? Icons.star : Icons.star_border,
+                key: ValueKey(isfav),
+              ),
+            ),
           ),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.network(
-              meal.imageUrl,
-              height: 300,
-              width: double.infinity,
-              fit: BoxFit.cover,
+            Hero(
+              tag:meal.id,
+              child: Image.network(
+                meal.imageUrl,
+                height: 300,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
             const SizedBox(
               height: 15,
